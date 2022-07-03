@@ -68,37 +68,37 @@ export default function Search() {
         movies.length > 0 && (
           <>
             <MoviesList movies={movies} />
-            <ReactPaginate
-              // renderOnZeroPageCount={null}
-              previousLabel={'Previous'}
-              nextLabel={'Next'}
-              breakLabel={'...'}
-              pageCount={pageCount}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={3}
-              onPageChange={handlePageClick}
-              containerClassName={
-                'inline-flex -space-x-px fixed bottom-8 left-[50%] translate-x-[-50%] border-gray-50 shadow-sm shadow-white'
-              }
-              pageLinkClassName={
-                'py-2 px-3 text-white border hover:bg-gray-600  border-gray-700 bg-gray-700 text-white'
-              }
-              previousLinkClassName={
-                'py-2 px-3 leading-tight rounded-l-lg border  bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white'
-              }
-              nextLinkClassName={
-                'py-2 px-3 leading-tight rounded-r-lg border  bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white'
-              }
-              breakLinkClassName={
-                'py-2 px-3 hover:text-blue-700 border-gray-700 bg-gray-700 text-white'
-              }
-              activeLinkClassName={
-                'py-2 px-3 text-white border border-gray-300  bg-red-700 border-gray-700 text-white'
-              }
-            />
           </>
         )
       )}
+      <ReactPaginate
+        // renderOnZeroPageCount={null}
+        previousLabel={'Previous'}
+        nextLabel={'Next'}
+        breakLabel={'...'}
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={3}
+        onPageChange={handlePageClick}
+        containerClassName={
+          'inline-flex -space-x-px fixed bottom-8 left-[50%] translate-x-[-50%] border-gray-50 shadow-sm shadow-white'
+        }
+        pageLinkClassName={
+          'py-2 px-3 text-white border hover:bg-gray-600  border-gray-700 bg-gray-700 text-white'
+        }
+        previousLinkClassName={
+          'py-2 px-3 leading-tight rounded-l-lg border  bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white'
+        }
+        nextLinkClassName={
+          'py-2 px-3 leading-tight rounded-r-lg border  bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white'
+        }
+        breakLinkClassName={
+          'py-2 px-3 hover:text-blue-700 border-gray-700 bg-gray-700 text-white'
+        }
+        activeLinkClassName={
+          'py-2 px-3 text-white border border-gray-300  bg-red-700 border-gray-700 text-white'
+        }
+      />
     </div>
   );
 }
