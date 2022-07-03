@@ -37,6 +37,10 @@ export default function MovieDetails() {
               <figure className="flex-grow shrink-0 basis-[200px] max-w-md max-h-[80vh]">
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = './images/Movie_Placeholder.jpg';
+                  }}
                   alt={movie?.title}
                   className="rounded-t-lg w-full h-full object-contain transition-transform ease-out duration-200 hover:scale-[1.030] cursor-pointer"
                 />

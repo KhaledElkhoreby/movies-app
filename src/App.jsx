@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="mt-20">
+      <div className="my-20">
         <Routes>
           <Route path="/">
             <Route index element={<Movies />} />

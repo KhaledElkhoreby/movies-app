@@ -9,11 +9,15 @@ export default function MovieItem({ movie }) {
   else rateColor = 'text-yellow-500';
 
   return (
-    <li className=" flex flex-col w-96 max-w-sm h-[85vh] mt-2 card shadow hover:shadow-lg transition-all ease-in-out">
+    <li className=" flex flex-col w-96 max-w-sm h-[70vh] mt-2 card shadow hover:shadow-lg transition-all ease-in-out">
       <figure className="h-3/4">
         <Link to={`/${movie.id}`} className="w-full h-full">
           <img
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = './images/Movie_Placeholder.jpg';
+            }}
             alt={movie.title}
             className="rounded-t-lg w-full h-full object-fill transition-transform ease-out duration-200 hover:scale-[1.030] cursor-pointer"
           />

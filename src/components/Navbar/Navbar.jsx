@@ -1,17 +1,45 @@
+import themes from 'daisyui/src/colors/themes';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 export default function Navbar() {
   return (
     <nav className="bg-neutral-focus text-white text-xl py-4 fixed top-0 w-full z-50 shadow">
       <ul className="flex items-center gap-5  container font-semibold ">
         <li className=" hover:text-primary transition-colors cursor-pointer">
-          <Link to="/">Movies</Link>
+          <NavLink
+            to="/"
+            style={({ isActive }) =>
+              isActive
+                ? { color: themes['[data-theme=autumn]'].error }
+                : undefined
+            }
+          >
+            Movies
+          </NavLink>
         </li>
         <li className=" hover:text-primary transition-colors cursor-pointer">
-          <Link to="favorites">Favorites</Link>
+          <NavLink
+            to="favorites"
+            style={({ isActive }) =>
+              isActive
+                ? { color: themes['[data-theme=autumn]'].error }
+                : undefined
+            }
+          >
+            Favorites
+          </NavLink>
         </li>
         <li className="ml-auto hover:text-primary transition-colors cursor-pointer">
-          <Link to="search">Search</Link>
+          <NavLink
+            to="search"
+            style={({ isActive }) =>
+              isActive
+                ? { color: themes['[data-theme=autumn]'].error }
+                : undefined
+            }
+          >
+            Search
+          </NavLink>
         </li>
       </ul>
     </nav>

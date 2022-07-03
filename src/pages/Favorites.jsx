@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function Favorites() {
-  return <div>Favorites</div>;
+  return <div className="container">Favorites</div>;
 }
