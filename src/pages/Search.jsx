@@ -1,35 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { HashLoader } from 'react-spinners';
 import MoviesList from '../components/Movies/MoviesList';
-import axiosInstance from '../data/axiosConfig';
+import { useSearchForMoviesQuery } from '../data/store/movies';
 
 export default function Search() {
   const [query, setQuery] = useState('');
-  const [movies, setMovies] = useState([]);
-  const [pageCount, setPagesCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        setLoaded(false);
-        if (query.trim().length > 0) {
-          const { data } = await axiosInstance.get(
-            `/search/movie?query=${query}&page=${currentPage}`
-          );
-          console.log(data);
-          setMovies(data.results);
-          setPagesCount(data.total_pages);
-        }
-        setTimeout(setLoaded, 300, true);
-      } catch (err) {
-        setLoaded(true);
-        console.log(err);
-      }
-    })();
-  }, [query, currentPage]);
+  const { data, isLoading } = useSearchForMoviesQuery({
+    query,
+    currentPage,
+  });
+
+  const movies = data?.results;
+  const pageCount = data?.total_pages || 0;
 
   const onChangeSearchHandler = (e) => {
     const query = e.target.value.trim();
@@ -56,7 +41,7 @@ export default function Search() {
           />
         </div>
       </div>
-      {!loaded ? (
+      {isLoading && (
         <HashLoader
           color="#d1255b"
           loading
@@ -64,15 +49,10 @@ export default function Search() {
           speedMultiplier={2}
           className="mx-auto mt-5 "
         />
-      ) : (
-        movies.length > 0 && (
-          <>
-            <MoviesList movies={movies} />
-          </>
-        )
       )}
+      {movies && <MoviesList movies={movies} />}
       <ReactPaginate
-        // renderOnZeroPageCount={null}
+        renderOnZeroPageCount={null}
         previousLabel={'Previous'}
         nextLabel={'Next'}
         breakLabel={'...'}

@@ -1,19 +1,12 @@
-import { RadialProgress } from 'react-daisyui';
-import { Link } from 'react-router-dom';
-import { AiOutlineStar } from 'react-icons/ai';
-import { AiFillStar } from 'react-icons/ai';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { RadialProgress } from 'react-daisyui';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
+import { Link, useMatch } from 'react-router-dom';
 import { addToFavorite, removeFavorite } from '../../data/store/favorite';
-import { useMatch } from 'react-router-dom';
 
 export default function MovieItem({ movie }) {
   const isInFavoritePage = useMatch('favorites');
-
-  const favMovie = useSelector((state) => {
-    state.favorites.favorites.find((el) => el.id === movie.id);
-  });
-  console.log(favMovie);
   const dispatch = useDispatch();
   const [inFavorite, setInFavorite] = useState(isInFavoritePage);
   const rate = movie.vote_average * 10;
@@ -33,7 +26,7 @@ export default function MovieItem({ movie }) {
   };
 
   return (
-    <li className=" flex flex-col w-96 max-w-sm h-[70vh] mt-2 card shadow hover:shadow-lg transition-all ease-in-out relative">
+    <li className=" flex flex-col w-96 h-[600px] max-h-[70vh] mt-2 card shadow hover:shadow-lg transition-all ease-in-out relative">
       {!inFavorite ? (
         <AiOutlineStar
           className="btn btn-active text-5xl p-0 text-yellow-400 bg-slate-800 rounded-full absolute top-4 right-3 z-10 hover:text-yellow-300 cursor-pointer"
