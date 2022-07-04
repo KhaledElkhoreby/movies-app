@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { HashLoader } from 'react-spinners';
@@ -5,12 +6,15 @@ import MoviesList from '../components/Movies/MoviesList';
 import { useSearchForMoviesQuery } from '../data/store/movies';
 
 export default function Search() {
+  const language = Cookies.get('i18next') || 'en';
+
   const [query, setQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
 
   const { data, isLoading } = useSearchForMoviesQuery({
     query,
     currentPage,
+    language,
   });
 
   const movies = data?.results;

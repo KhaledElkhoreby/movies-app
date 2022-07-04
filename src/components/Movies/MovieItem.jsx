@@ -26,7 +26,7 @@ export default function MovieItem({ movie }) {
   };
 
   return (
-    <li className=" flex flex-col w-96 h-[600px] max-h-[70vh] mt-2 card shadow hover:shadow-lg transition-all ease-in-out relative">
+    <li className=" flex flex-col w-80 h-[600px] max-h-[475px] mt-2 card shadow hover:shadow-lg transition-all ease-in-out relative">
       {!inFavorite ? (
         <AiOutlineStar
           className="btn btn-active text-5xl p-0 text-yellow-400 bg-slate-800 rounded-full absolute top-4 right-3 z-10 hover:text-yellow-300 cursor-pointer"
@@ -51,7 +51,7 @@ export default function MovieItem({ movie }) {
           />
         </Link>
       </figure>
-      <div className="bg-gray-900 text-white p-4 pt-10 rounded-b-lg h-1/4 relative">
+      <div className="bg-gray-900 text-white p-4 rounded-b-lg h-1/4 relative">
         <Link to={`/${movie.id}`}>
           <h1 className="text-lg font-semibold hover:text-primary-content transition-all ease-in-out">
             {movie.title}
@@ -59,7 +59,7 @@ export default function MovieItem({ movie }) {
         </Link>
         <h2 className="text-sm text-slate-300">{movie.release_date}</h2>
         <RadialProgress
-          className={`bg-black ${rateColor} font-bold border-4 border-black absolute top-[-2rem] left-4 shadow-white shadow-sm`}
+          className={`bg-black ${rateColor} font-bold border-4 border-black absolute top-[-2.85rem] left-4 shadow-white shadow-sm`}
           value={rate}
           size={'3.25rem'}
         >

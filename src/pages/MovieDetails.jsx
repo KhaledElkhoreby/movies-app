@@ -1,11 +1,15 @@
+import Cookies from 'js-cookie';
 import { Badge, RadialProgress } from 'react-daisyui';
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { HashLoader } from 'react-spinners';
 import { useGetMovieByIdQuery } from '../data/store/movies';
 
 export default function MovieDetails() {
+  const language = Cookies.get('i18next') || 'en';
+  const { t } = useTranslation();
   const { id } = useParams();
-  const { data: movie, isLoading } = useGetMovieByIdQuery(id);
+  const { data: movie, isLoading } = useGetMovieByIdQuery({ id, language });
   const rate = movie?.vote_average * 10;
   let rateColor = '';
   console.log(rate);
@@ -36,7 +40,7 @@ export default function MovieDetails() {
             </figure>
             <div className="flex-grow shrink-0 basis-[300px] justify-self-stretch flex flex-col p-4 text-white gap-y-4">
               <h1 className="text-3xl font-bold ">
-                {movie?.original_title}
+                {movie?.title}
                 {'  '}
                 <Badge
                   size="lg"
@@ -64,7 +68,7 @@ export default function MovieDetails() {
               <h1 className="italic text-slate-200 text-lg">
                 {movie?.tagline}
               </h1>
-              <h1 className="text-2xl font-bold">Overview</h1>
+              <h1 className="text-2xl font-bold">{t('Overview')}</h1>
               <p className="max-w-md">{movie?.overview}</p>
             </div>
           </div>

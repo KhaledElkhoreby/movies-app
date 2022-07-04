@@ -8,33 +8,11 @@ module.exports = {
     extend: {},
     container: {
       center: true,
-      padding: '1rem',
+      padding: '2rem',
     },
   },
   daisyui: {
-    themes: [
-      {
-        mytheme: {
-          primary: '#be123c',
-
-          secondary: '#ffa991',
-
-          accent: '#eaa1dc',
-
-          neutral: '#1D1E2A',
-
-          'base-100': '#21284A',
-
-          info: '#8297ED',
-
-          success: '#21977D',
-
-          warning: '#FBD760',
-
-          error: '#F26E7B',
-        },
-      },
-    ],
+    themes: ['dark'],
   },
   safelist: [
     {

@@ -1,3 +1,5 @@
+import { changeLanguage } from 'i18next';
+import Cookies from 'js-cookie';
 import { createContext, useState } from 'react';
 
 export const SettingContext = createContext({
@@ -5,7 +7,9 @@ export const SettingContext = createContext({
 });
 
 export default function SettingProvieder({ children }) {
-  const [lang, setLang] = useState('en');
+  const currentLanguageCode = Cookies.get('i18next') || 'en';
+  const [lang, setLang] = useState(currentLanguageCode);
+  changeLanguage(lang);
   return (
     <SettingContext.Provider value={{ lang, setLang }}>
       {children}

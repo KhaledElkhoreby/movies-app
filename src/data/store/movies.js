@@ -11,20 +11,20 @@ export const moviesApi = createApi({
   }),
   endpoints: (builder) => ({
     getPopularMovies: builder.query({
-      query: () => ({
-        url: `movie/popular`,
+      query: (language) => ({
+        url: `movie/popular?language=${language}`,
         params,
       }),
     }),
     getMovieById: builder.query({
-      query: (id) => ({
-        url: `movie/${id}`,
+      query: (q) => ({
+        url: `movie/${q.id}?language=${q.language}`,
         params,
       }),
     }),
     searchForMovies: builder.query({
       query: (search) => ({
-        url: `search/movie?query=${search.query}&page=${search.currentPage}`,
+        url: `search/movie?query=${search.query}&page=${search.currentPage}&language=${search.language}`,
         params,
       }),
     }),

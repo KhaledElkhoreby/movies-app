@@ -1,16 +1,27 @@
+import React, { Suspense, useContext, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Route, Routes } from 'react-router-dom';
+import { HashLoader } from 'react-spinners';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
+import { SettingContext } from './data/store/context/SettingProvieder';
+import { languages } from './i18next';
 import Movies from './pages/Movies';
-import React, { Suspense, useContext } from 'react';
 import Search from './pages/Search';
-import { HashLoader } from 'react-spinners';
 
 const Favorites = React.lazy(() => import('./pages/Favorites'));
 
 const MovieDetails = React.lazy(() => import('./pages/MovieDetails'));
 
 function App() {
+  const { lang } = useContext(SettingContext);
+  const currentLanguage = languages.find((el) => el.code === lang);
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    document.body.dir = currentLanguage.dir || 'ltr';
+    document.title = t('app_title');
+  }, [currentLanguage, t]);
   return (
     <>
       <Navbar />

@@ -1,9 +1,13 @@
+import Cookies from 'js-cookie';
 import { HashLoader } from 'react-spinners';
 import MoviesList from '../components/Movies/MoviesList';
 import { useGetPopularMoviesQuery } from '../data/store/movies';
 
 export default function Movies() {
-  const { data, error, isLoading } = useGetPopularMoviesQuery();
+  const currentLanguageCode = Cookies.get('i18next') || 'en';
+
+  const { data, error, isLoading } =
+    useGetPopularMoviesQuery(currentLanguageCode);
   const movies = data?.results || [];
 
   return (
