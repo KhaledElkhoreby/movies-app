@@ -2,9 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Movies from './pages/Movies';
-// import Favorites from './pages/Favorites';
-import React, { Suspense } from 'react';
-// import MovieDetails from './pages/MovieDetails';
+import React, { Suspense, useContext } from 'react';
 import Search from './pages/Search';
 import { HashLoader } from 'react-spinners';
 
