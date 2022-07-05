@@ -1,11 +1,13 @@
 import Cookies from 'js-cookie';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ReactPaginate from 'react-paginate';
 import { HashLoader } from 'react-spinners';
 import MoviesList from '../components/Movies/MoviesList';
 import { useSearchForMoviesQuery } from '../data/store/movies';
 
 export default function Search() {
+  const { t } = useTranslation();
   const language = Cookies.get('i18next') || 'en';
 
   const [query, setQuery] = useState('');
@@ -35,11 +37,11 @@ export default function Search() {
 
   return (
     <div className="container">
-      <div className="form-control">
+      <div className="form-control mb-7">
         <div className="flex justify-center">
           <input
             type="search"
-            placeholder="Search..."
+            placeholder={`${t('Search')}...`}
             className="input input-bordered w-screen max-w-lg"
             onChange={onChangeSearchHandler}
           />
@@ -71,10 +73,10 @@ export default function Search() {
           'py-2 px-3 text-white border hover:bg-gray-600  border-gray-700 bg-gray-700 text-white'
         }
         previousLinkClassName={
-          'py-2 px-3 leading-tight rounded-l-lg border  bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white'
+          'py-2 px-3 leading-tight rounded-l-lg rtl:rounded-r-lg rtl:rounded-l-none border bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white'
         }
         nextLinkClassName={
-          'py-2 px-3 leading-tight rounded-r-lg border  bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white'
+          'py-2 px-3 leading-tight rounded-r-lg rtl:rounded-l-lg rtl:rounded-r-none bg-gray-800 border border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white'
         }
         breakLinkClassName={
           'py-2 px-3 hover:text-blue-700 border-gray-700 bg-gray-700 text-white'

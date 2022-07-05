@@ -26,7 +26,7 @@ export default function MovieItem({ movie }) {
   };
 
   return (
-    <li className=" flex flex-col w-80 h-[600px] max-h-[475px] mt-2 card shadow hover:shadow-lg transition-all ease-in-out relative">
+    <li className=" flex flex-col w-80 h-[600px] max-h-[475px] card shadow hover:shadow-lg transition-all ease-in-out relative">
       {!inFavorite ? (
         <AiOutlineStar
           className="btn btn-active text-5xl p-0 text-yellow-400 bg-slate-800 rounded-full absolute top-4 right-3 z-10 hover:text-yellow-300 cursor-pointer"
