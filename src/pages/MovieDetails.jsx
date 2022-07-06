@@ -12,7 +12,6 @@ export default function MovieDetails() {
   const { data: movie, isLoading } = useGetMovieByIdQuery({ id, language });
   const rate = movie?.vote_average * 10;
   let rateColor = '';
-  console.log(rate);
 
   if (rate > 70) rateColor = 'text-green-600';
   else rateColor = 'text-yellow-500';

@@ -22,7 +22,6 @@ export default function MovieItem({ movie }) {
       dispatch(addToFavorite(movie));
     }
     setInFavorite((prev) => !prev);
-    console.log(movie);
   };
 
   return (

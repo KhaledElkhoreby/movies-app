@@ -30,7 +30,6 @@ export default function Search() {
   };
 
   const handlePageClick = (data) => {
-    console.log(data);
     let currentPage = data.selected + 1;
     setCurrentPage(currentPage);
   };
@@ -42,7 +41,7 @@ export default function Search() {
           <input
             type="search"
             placeholder={`${t('Search')}...`}
-            className="input input-bordered w-screen max-w-lg"
+            className="input input-bordered w-screen max-w-lg text-lg"
             onChange={onChangeSearchHandler}
           />
         </div>
@@ -67,7 +66,7 @@ export default function Search() {
         pageRangeDisplayed={3}
         onPageChange={handlePageClick}
         containerClassName={
-          'inline-flex -space-x-px fixed bottom-8 left-[50%] translate-x-[-50%] border-gray-50 shadow-sm shadow-white'
+          'flex items-baseline justify-center my-10 saturate-200'
         }
         pageLinkClassName={
           'py-2 px-3 text-white border hover:bg-gray-600  border-gray-700 bg-gray-700 text-white'

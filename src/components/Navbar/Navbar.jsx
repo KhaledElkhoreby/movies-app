@@ -7,7 +7,7 @@ import { SettingContext } from '../../data/store/context/SettingProvieder';
 import { languages } from '../../i18next';
 
 const activeStyle = ({ isActive }) =>
-  isActive ? { color: themes['[data-theme=autumn]'].error } : undefined;
+  isActive ? { color: themes['[data-theme=autumn]']['secondary'] } : undefined;
 
 export default function NavBar() {
   const { lang, setLang } = useContext(SettingContext);
@@ -38,11 +38,13 @@ export default function NavBar() {
               tabIndex={0}
               className="w-52 menu-compact mt-3 bg-neutral"
             >
-              <Dropdown.Item>
-                <NavLink to="favorites" style={activeStyle}>
-                  {t('Favorites')}
-                </NavLink>
-              </Dropdown.Item>
+              <NavLink
+                to="favorites"
+                className="dropdown-item p-2 px-4"
+                style={activeStyle}
+              >
+                {t('Favorites')}
+              </NavLink>
               <li tabIndex={0} className="relative">
                 <button className="justify-between">
                   {t('language')}
@@ -56,7 +58,7 @@ export default function NavBar() {
                     <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
                   </svg>
                 </button>
-                <ul className="p-2  bg-neutral-focus dropdown dropdown-end absolute top-[2rem] left-[50%] translate-x-[-50%]">
+                <ul className="p-2 bg-neutral-focus dropdown dropdown-end absolute top-[2rem] left-[50%] translate-x-[-50%]">
                   {languages.map(({ code, country_code, name }) => (
                     <li key={country_code}>
                       <button

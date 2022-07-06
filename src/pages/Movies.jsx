@@ -9,7 +9,6 @@ export default function Movies() {
   const { data, error, isLoading } =
     useGetPopularMoviesQuery(currentLanguageCode);
   const movies = data?.results || [];
-
   return (
     <div className="container">
       {movies && <MoviesList movies={movies} />}
